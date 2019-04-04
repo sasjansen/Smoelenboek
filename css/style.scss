@@ -1,0 +1,59 @@
+$font-header: 'Homemade Apple', cursive;
+$primary-backgroundcolor: lightgray;
+$font-body: 'Homemade Apple', cursive;
+
+header {
+  display: flex;
+  flex-direction:column;
+  align-items: center;
+font: 100% $font-header;    
+  padding: 10px;
+  font-size: 2em;
+  color: white;
+    background-color: $primary-backgroundcolor;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-gap: 30px;
+}
+
+body {
+    font-family: $font-body;
+}
+
+.logo {
+  width: 200px; 
+    align-self: flex-start;
+}
+
+.logo {
+  height: 50px;
+  margin-right: 20px;
+}
+
+.cards {
+  max-width: 960px;  
+    margin: 30px auto 30px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+article {
+  position: relative;
+}
+
+.article-img {
+  height: 200px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.article-title {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.2);
+}
