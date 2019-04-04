@@ -5,12 +5,13 @@
     <title>Smoelenboek</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase.js"></script>
     <link href="css/reset.css" rel="stylesheet" type="text/css">
     <link href="css/style.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Homemade+Apple|Roboto" rel="stylesheet">
  </head>
 
- <body>
+ <body onload="init();">
     <header>
         <div class="logo">
             <svg  version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 610 160" style="enable-background:new 0 0 610 160;" xml:space="preserve">
@@ -24,51 +25,50 @@
             </svg>
         </div>    
         <h1>Smoelenboek</h1>
-        <nav>
-        </nav>
+
     </header>
     
     <main>
-        <section class="cards">
-            <div class="card">
-               <img src="images/10.jpg" alt="John" style="width:100%">
-                <h2>John Doe</h2>
-                <p>CEO  Founder, Example</p>  
-            </div>
-            <div class="card">
-               <img src="images/10.jpg" alt="John" style="width:100%">
-                <h2>John Doe</h2>
-                <p>CEO  Founder, Example</p>  
-            </div>
-            <div class="card">
-               <img src="images/10.jpg" alt="John" style="width:100%">
-                <h2>John Doe</h2>
-                <p>CEO  Founder, Example</p>  
-            </div>
-            <div class="card">
-               <img src="images/10.jpg" alt="John" style="width:100%">
-                <h2>John Doe</h2>
-                <p>CEO  Founder, Example</p>  
-            </div>
-            <div class="card">
-               <img src="images/10.jpg" alt="John" style="width:100%">
-                <h2>John Doe</h2>
-                <p>CEO  Founder, Example</p>  
-            </div>
-            <div class="card">
-               <img src="images/10.jpg" alt="John" style="width:100%">
-                <h2>John Doe</h2>
-                <p>CEO  Founder, Example</p>  
-            </div>
-            <div class="card">
-               <img src="images/10.jpg" alt="John" style="width:100%">
-                <h2>John Doe</h2>
-                <p>CEO  Founder, Example</p>  
-            </div>
-            <div class="card">
-               <img src="images/10.jpg" alt="John" style="width:100%">
-                <h2>John Doe</h2>
-                <p>CEO  Founder, Example</p>  
+        <nav>
+            <ul>
+                <li><button id="toevoegenButton">Toevoegen</button></li>
+            </ul> 
+        </nav>
+        <section class="cards" id="cards">
+        </section>
+        <section>
+            <div id="myModal" class="modal">
+                <div class="modal-content">
+                    <span class="sluitIcon">&times;</span>
+                    <form name="profileInfo" class="profileInfo">
+                        <div class="leftInputFields">
+                            <input type="text" name="firebaseid" id="firebaseid" hidden>
+                            Voornaam:<br>
+                            <input type="text" name="voornaam" placeholder="Bill" id="voornaam" required>
+                            <br>Achternaam:<br>
+                            <input type="text" name="achternaam" placeholder="Gates" id="achternaam">
+                            <br>Geboortedatum:<br>
+                            <input type="text" name="geboortedatum" placeholder="28-10-1955" id="geboortedatum">
+                            <br>Functietitel:<br>
+                            <input type="text" name="functietitel" placeholder="Business magnate" id="functietitel" required> 
+                            <br>Biografie:<br>
+                            <textarea rows="6" cols="40" name="biografie" id="biografie">
+                            </textarea>
+                        </div>
+                        <div class="middleInputFields">
+                            Pasfoto:<br>
+                            <input type="file" id="myFile" name="pasFotoFile" size="50" onchange="fileLoad()" required>
+                            <div id="examplePicture"><img id="foto" src="images/Portrait_Placeholder.png"/></div>
+                            <div id="info"></div>
+                            
+                            <input type="text" name="pasfoto" id="pasfoto" hidden>
+                        </div>
+                        <div class="rightInputFields">
+                           <input type="button" value="Verwijderen" id="verwijderenButton" hidden>
+                            <input type="button" value="Opslaan" id="opslaanButton" onclick="checkAndSend()">
+                        </div>
+                    </form> 
+                </div>
             </div>
         </section>
     </main>
